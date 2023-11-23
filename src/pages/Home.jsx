@@ -1,12 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Spinner from "../components/Spinner";
+
 import { Link } from "react-router-dom";
 import { AiOutlineEdit } from "react-icons/ai";
 import { BsInfoCircle } from "react-icons/bs";
 import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
 import BooksTable from "../Components/Home/BooksTable";
 import BooksCard from "../Components/Home/BooksCard";
+import Loader from "../Components/Loader";
 
 const Home = () => {
   const [books, setBooks] = useState([]);
@@ -48,7 +49,7 @@ const Home = () => {
         </Link>
       </div>
       {loading ? (
-        <Spinner />
+        <Loader />
       ) : showType === "table" ? (
         <BooksTable books={books} />
       ) : (

@@ -2,8 +2,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import BackButton from "../Components/BackButton";
-import Spinner from "../components/Spinner";
+
 import { useSnackbar } from "notistack";
+import Loader from "../Components/Loader";
 
 const EditBook = () => {
   const [title, setTitle] = useState("");
@@ -17,7 +18,7 @@ const EditBook = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://localhost:3000/books/${id}`)
+      .get(`https://bookstoreapi-two.vercel.app/books/${id}`)
       .then((res) => {
         setAuthor(res.data.author);
         setPublishYear(res.data.publishYear);
@@ -40,7 +41,7 @@ const EditBook = () => {
 
     setLoading(true);
     axios
-      .put(`https://bookstoreapi-two.vercel.app/${id}`, data)
+      .put(`https://bookstoreapi-two.vercel.app/books/${id}`, data)
       .then(() => {
         setLoading(false);
         enqueueSnackbar("Book  Edited  Sucessfully!", { variant: "success" });
@@ -59,7 +60,7 @@ const EditBook = () => {
     <div className="p-4">
       <BackButton />
       <h1 className="text-3xl my-4">Edit Book</h1>
-      {loading ? <Spinner /> : ""}
+      {loading ? <Loader /> : ""}
       <div className="flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto">
         <div className="my-4">
           <label className="text-xl mr-4 text-gray-500">Title</label>

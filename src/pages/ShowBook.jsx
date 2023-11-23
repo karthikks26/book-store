@@ -2,8 +2,9 @@ import axios from "axios";
 import { data } from "browserslist";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Spinner from "../components/Spinner";
+
 import BackButton from "../Components/BackButton";
+import Loader from "../Components/Loader";
 
 const ShowBook = () => {
   const [book, setBook] = useState([]);
@@ -29,7 +30,7 @@ const ShowBook = () => {
       <BackButton />
       <h1 className="text-3xl my-4">ShowBook</h1>
       {loading ? (
-        <Spinner />
+        <Loader />
       ) : (
         <div className="flex flex-col border-2 border-sky-400 rounded-xl w-fit p-4">
           <div className="my-4">

@@ -2,8 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BackButton from "../Components/BackButton";
-import Spinner from "../components/Spinner";
 import { useSnackbar } from "notistack";
+import Loader from "../Components/Loader";
 
 const CreateBook = () => {
   const [title, setTitle] = useState("");
@@ -39,7 +39,7 @@ const CreateBook = () => {
     <div className="p-4">
       <BackButton />
       <h1 className="text-3xl my-4">Create Book</h1>
-      {loading ? <Spinner /> : ""}
+      {loading ? <Loader /> : ""}
       <div className="flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto">
         <div className="my-4">
           <label className="text-xl mr-4 text-gray-500">Title</label>
